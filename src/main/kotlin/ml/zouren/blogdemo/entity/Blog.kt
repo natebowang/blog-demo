@@ -1,16 +1,15 @@
 package ml.zouren.blogdemo.entity
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 class Blog(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
+        @Column(length=2000)
         var title: String,
+        @Column(length=5000)
         var content: String,
 ) {
     override fun equals(other: Any?): Boolean {

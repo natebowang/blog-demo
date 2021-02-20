@@ -1,9 +1,7 @@
 package ml.zouren.blogdemo.repository
 
 import ml.zouren.blogdemo.entity.Blog
-import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
@@ -36,6 +34,6 @@ class BlogRepositoryTests @Autowired constructor(
         // Read from db
         assertEquals(blogRepository.count(), 1)
         blog = blogRepository.findByIdOrNull(blogRecord1.id!!)
-        assertThat(blog).isEqualTo(null)
+        assertNull(blog)
     }
 }

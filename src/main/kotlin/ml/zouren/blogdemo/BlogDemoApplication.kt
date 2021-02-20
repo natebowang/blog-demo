@@ -9,3 +9,5 @@ class BlogDemoApplication
 fun main(args: Array<String>) {
     runApplication<BlogDemoApplication>(*args)
 }
+
+

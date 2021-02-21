@@ -1,11 +1,9 @@
 package ml.zouren.blogdemo.controller
 
-import ml.zouren.blogdemo.entity.Blog
 import ml.zouren.blogdemo.entity.BlogInput
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.http.MediaType

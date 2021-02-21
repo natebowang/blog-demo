@@ -2,7 +2,7 @@ openapi: "3.0.0"
 info:
   version: 1.0.0
   title: Kotlin Spring Boot Demo
-  description: This is a simple Kotlin servere initialized by Spring Boot. 
+  description: This is a simple Kotlin server build by Spring Boot.
   contact:
     name: Nathan Wang
     email: auvmacintosh1@gmail.com

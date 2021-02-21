@@ -1,0 +1,77 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Kotlin Spring Boot Demo
+  description: This is a simple Kotlin servere initialized by Spring Boot. 
+  contact:
+    name: Nathan Wang
+    email: auvmacintosh1@gmail.com
+    url: https://www.linkedin.com/in/nathan-wang-84b5a11b4/ 
+
+servers:
+  - url: https://www.zouren.ml/
+paths:
+  /blogs:
+    get:
+      description: Show all blogs list. 
+      operationId: getAllBlogs
+      responses:
+        '200':
+          description: Successful operation
+    post:
+      description: Create a new blog. 
+      operationId: createBlog
+      requestBody:
+        description: New blog
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/blog'
+      responses:
+        '201':
+          description: Successfully created
+        '422':
+          description: Missing non-null fields
+  /blogs/{id}:
+    get:
+      description: Find a blog. 
+      operationId: getBlogById
+      parameters:
+        - name: id
+          in: path
+          description: blog ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+        '404':
+          description: Not found
+    delete:
+      description: Delete a blog. 
+      operationId: deleteBlog
+      parameters:
+        - name: id
+          in: path
+          description: blog ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Successfully deleted
+        '404':
+          description: Not found
+components:
+  schemas:
+    blog:
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string

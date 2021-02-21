@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import javax.annotation.Resource
 
-
+@CrossOrigin
 @RestController
 class BlogController {
     @Resource
@@ -20,7 +20,11 @@ class BlogController {
     // curl -v -d '{ "title":"ttt"}' -H "Content-Type:application/json" http://localhost:8080/blogs
     // 422
     @PostMapping("/blogs")
-    fun createBlog(@RequestBody blogInput: BlogInput): ResponseEntity<Blog> {
+    fun createBlog(@RequestBody blogInput: BlogInput?): ResponseEntity<Blog> {
+        if (blogInput == null) {
+            throw ResponseStatusException(
+                    HttpStatus.UNPROCESSABLE_ENTITY, "Missing non-null fields");
+        }
         val blog = blogInput.toBlog()
         if (blog != null) {
             return ResponseEntity(blogService.save(blog), HttpStatus.CREATED)
@@ -54,7 +58,7 @@ class BlogController {
     // 204
     // 404
     @DeleteMapping("/blogs/{id}")
-    fun deleteBlog(@PathVariable id: Int):ResponseEntity<Void> {
+    fun deleteBlog(@PathVariable id: Int): ResponseEntity<Void> {
         if (blogService.findByIdOrNull(id) != null) {
             blogService.deleteById(id)
             return ResponseEntity(HttpStatus.NO_CONTENT)

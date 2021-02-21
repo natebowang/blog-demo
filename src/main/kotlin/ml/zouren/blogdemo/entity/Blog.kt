@@ -7,9 +7,9 @@ class Blog(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
-        @Column(length=2000)
+        @Column(length = 2000)
         var title: String,
-        @Column(length=5000)
+        @Column(length = 5000)
         var content: String,
 ) {
     override fun equals(other: Any?): Boolean {
@@ -29,3 +29,15 @@ class Blog(
     }
 }
 
+class BlogInput(
+        var id: Int? = null,
+        var title: String? = null,
+        var content: String? = null,
+) {
+    fun toBlog(): Blog? {
+        if (title != null && content != null) {
+            return Blog(id, title!!, content!!)
+        }
+        return null
+    }
+}

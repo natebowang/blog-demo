@@ -23,7 +23,7 @@ class BlogServiceTests {
     val blogRecord1 = Blog(id = 1, title = "Kotlin programming language",
             content = "Modern, concise and safe programming language")
     val blogRecord2 = Blog(id = 2, title = "JavaScript programming language",
-            content = "Modern, concise and safe programming language")
+            content = "Lightweight, interpreted, or just-in-time compiled programming language")
     var blogs = mutableListOf(blogRecord1, blogRecord2)
 
     @Test
